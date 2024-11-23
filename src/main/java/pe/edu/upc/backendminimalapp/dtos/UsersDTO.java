@@ -1,5 +1,7 @@
 package pe.edu.upc.backendminimalapp.dtos;
 
+import pe.edu.upc.backendminimalapp.entities.Role;
+
 public class UsersDTO {
 
     private Integer user_id;
@@ -8,7 +10,11 @@ public class UsersDTO {
 
     private String password;
 
+    private boolean enabled;
+
     private String image_profile;
+
+    private Role role;
 
     public Integer getUser_id() {
         return user_id;
@@ -34,11 +40,27 @@ public class UsersDTO {
         this.password = password;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     public String getImage_profile() {
         return image_profile;
     }
 
     public void setImage_profile(String image_profile) {
         this.image_profile = image_profile;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

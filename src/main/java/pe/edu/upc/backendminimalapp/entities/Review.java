@@ -19,7 +19,7 @@ public class Review {
     @ManyToOne
     @MapsId("userId")
     @JoinColumn(name = "user_id",  nullable = false)
-    private Users users;
+    private User user;
 
     @Column(name = "calification", nullable = false)
     private Double calification;
@@ -31,10 +31,10 @@ public class Review {
     public Review() {
     }
 
-    public Review(ReviewId id, Product product, Users users, Double calification, String description) {
+    public Review(ReviewId id, Product product, User user, Double calification, String description) {
         this.id = id;
         this.product = product;
-        this.users = users;
+        this.user = user;
         this.calification = calification;
         this.description = description;
     }
@@ -55,12 +55,12 @@ public class Review {
         this.product = product;
     }
 
-    public Users getUsers() {
-        return users;
+    public User getUsers() {
+        return user;
     }
 
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setUsers(User user) {
+        this.user = user;
     }
 
     public Double getCalification() {

@@ -2,7 +2,7 @@ package pe.edu.upc.backendminimalapp.dtos;
 
 import pe.edu.upc.backendminimalapp.entities.Product;
 import pe.edu.upc.backendminimalapp.entities.ReviewId;
-import pe.edu.upc.backendminimalapp.entities.Users;
+import pe.edu.upc.backendminimalapp.entities.User;
 
 
 public class ReviewDTO {
@@ -11,7 +11,7 @@ public class ReviewDTO {
 
     private Product product;
 
-    private Users users;
+    private User user;
 
     private Double calification;
 
@@ -33,12 +33,12 @@ public class ReviewDTO {
         this.product = product;
     }
 
-    public Users getUsers() {
-        return users;
+    public User getUsers() {
+        return user;
     }
 
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setUsers(User user) {
+        this.user = user;
     }
 
     public Double getCalification() {

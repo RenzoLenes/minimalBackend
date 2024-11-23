@@ -3,11 +3,10 @@ package pe.edu.upc.backendminimalapp.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.backendminimalapp.dtos.CategoryDTO;
 import pe.edu.upc.backendminimalapp.dtos.UsersDTO;
-import pe.edu.upc.backendminimalapp.entities.Category;
-import pe.edu.upc.backendminimalapp.entities.Users;
+import pe.edu.upc.backendminimalapp.entities.User;
 import pe.edu.upc.backendminimalapp.serviceinterfaces.IUserService;
 
 import java.util.List;
@@ -20,6 +19,9 @@ public class UserController {
     @Autowired
     private IUserService uS;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @GetMapping
     public List<UsersDTO> list(){
         return uS.list().stream().map(x->{
@@ -29,9 +31,11 @@ public class UserController {
     }
 
     @PostMapping
-    public void insert(@RequestBody UsersDTO dto){
+    public void registrar(@RequestBody UsersDTO dto) {
         ModelMapper m = new ModelMapper();
-        Users u = m.map(dto,Users.class);
+        User u = m.map(dto, User.class);
+        String encodedPassword = passwordEncoder.encode(u.getPassword());
+        u.setPassword(encodedPassword);
         uS.insert(u);
     }
 

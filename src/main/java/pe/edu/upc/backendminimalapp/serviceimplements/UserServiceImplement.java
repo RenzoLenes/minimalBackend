@@ -2,8 +2,7 @@ package pe.edu.upc.backendminimalapp.serviceimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.backendminimalapp.entities.Review;
-import pe.edu.upc.backendminimalapp.entities.Users;
+import pe.edu.upc.backendminimalapp.entities.User;
 import pe.edu.upc.backendminimalapp.repositories.IUserRepository;
 import pe.edu.upc.backendminimalapp.serviceinterfaces.IUserService;
 
@@ -16,18 +15,18 @@ public class UserServiceImplement implements IUserService {
     private IUserRepository uR;
 
     @Override
-    public void insert(Users users) {
-        uR.save(users);
+    public void insert(User user) {
+        uR.save(user);
     }
 
     @Override
-    public List<Users> list() {
+    public List<User> list() {
         return uR.findAll();
     }
 
     @Override
-    public void update(Users users) {
-        uR.save(users);
+    public void update(User user) {
+        uR.save(user);
     }
 
     @Override
@@ -36,7 +35,7 @@ public class UserServiceImplement implements IUserService {
     }
 
     @Override
-    public Users findById(int id) {
-        return uR.findById(id).orElse(new Users());
+    public User findById(int id) {
+        return uR.findById(id).orElse(new User());
     }
 }

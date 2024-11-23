@@ -18,7 +18,7 @@ public class ProductOrder {
     @ManyToOne
     @MapsId("userId") // Vincula categoryId de CategoryProductId con Category
     @JoinColumn(name = "user_id", nullable = false)
-    private Users users;
+    private User user;
 
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
@@ -29,10 +29,10 @@ public class ProductOrder {
     public ProductOrder() {
     }
 
-    public ProductOrder(ProductOrderId id, Product product, Users users, Integer quantity, Double amount) {
+    public ProductOrder(ProductOrderId id, Product product, User user, Integer quantity, Double amount) {
         this.id = id;
         this.product = product;
-        this.users = users;
+        this.user = user;
         this.quantity = quantity;
         this.amount = amount;
     }
@@ -53,12 +53,12 @@ public class ProductOrder {
         this.product = product;
     }
 
-    public Users getUsers() {
-        return users;
+    public User getUsers() {
+        return user;
     }
 
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setUsers(User user) {
+        this.user = user;
     }
 
     public Integer getQuantity() {
